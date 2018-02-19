@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>NextLevel Tool</title>
+</head>
+
+<body>
+
+    <div class="wrapper container">
+
+        <div class="content mx-auto">
+            <div class="dropList">
+                <br>
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h2 style="color:#007bff;">Welcome to Cisco Configuration Tool</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Select the Device from the list </h5>
+
+                        <select class="eqList custom-select">
+                            <option class="dropdown" value="ASE Client - 2800 for 75M and lower">ASE Client - 2800 for 75M and lower</option>
+                            <option class="dropdown" value="ASA 5510 9.1 standalone">ASA 5510 9.1 standalone</option>
+                            <option class="dropdown" value="Catalyst 3750-PoE">Catalyst 3750-PoE</option>
+                        </select>
+                        <br>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-lg" id="btn1">Continue</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="form card text-center hide">
+                <h1 class="deviceName"></h1>
+                <!-- Router ASE Client - 2800-->
+                <div class="hostName form-group">
+                    <label class="control-label">Hostname:</label>
+                    <input type="text" id="hostName" class="form-control" autofocus/>
+                </div>
+                <div class="password form-group">
+                    <label class="control-label">Password (enable secret):</label>
+                    <input type="text" id="password" class="form-control" />
+                </div>
+
+                <div class="lineSpeed form-group">
+                    <label class="control-label">LINE SPEED (1.5m, 20m, 100m, etc.)</label>
+                    <input type="text" id="lineSpeed" class="form-control" autofocus/>
+                </div>
+
+                <div class="CircuitId form-group">
+                    <label class="control-label">CIRCUIT ID</label>
+                    <input type="text" id="CircuitId" class="form-control" autofocus/>
+                </div>
+
+                <div class="VlanInt form-group">
+                    <label class="control-label">VLAN ASSIGNMENT (interface FastEthernet0/0) </label>
+                    <input type="text" id="VlanInt" class="form-control" autofocus/>
+                </div>
+
+                <div class="VlanEncap form-group">
+                    <label class="control-label">VLAN ASSIGNMENT (encapsulation dot1Q) </label>
+                    <input type="text" id="VlanEncap" class="form-control" autofocus/>
+                </div>
+
+                <div class="ipAddress0 form-group">
+                    <label class="control-label">IP address (interface FastEthernet0/0)</label>
+                    <input type="text" id="ipAddress0" class="form-control" autofocus/>
+                </div>
+
+                <div class="subnetMask0 form-group">
+                    <label class="control-label">Subnet Mask (interface FastEthernet0/0)</label>
+                    <input type="text" id="subnetMask0" class="form-control" autofocus/>
+                </div>
+
+                <div class="ClientInt form-group">
+                    <label class="control-label">Client (interface FastEthernet0/1):</label>
+                    <input type="text" id="ClientInt" class="form-control" autofocus/>
+                </div>
+
+                <div class="ipAddress1 form-group">
+                    <label class="control-label">IP address (interface FastEthernet0/1)</label>
+                    <input type="text" id="ipAddress1" class="form-control" autofocus/>
+                </div>
+
+                <div class="subnetMask1 form-group">
+                    <label class="control-label">Subnet Mask (interface FastEthernet0/1)</label>
+                    <input type="text" id="subnetMask1" class="form-control" autofocus/>
+
+                </div>
+                <div class="ipRoute form-group">
+                    <label class="control-label">IP Route:</label>
+                    <input type="text" id="ipRoute" class="form-control" autofocus/>
+                </div>
+
+                <div class="bandwidth form-group">
+                    <label class="control-label">Bandwidth (Mbps)</label>
+                    <input type="text" id="bandwidth" class="form-control" autofocus/>
+                </div>
+
+                <div class="zLoc form-group">
+                    <label class="control-label">Z-loc</label>
+                    <input type="text" id="zLoc" class="form-control" autofocus/>
+                </div>
+
+                <div class="voice form-group">
+                    <label class="control-label">Voice (Yes or No)</label>
+                    <input type="text" id="voice" class="form-control" autofocus/>
+                </div>
+
+                <!-- Cisco 3750 -->
+
+                <div class="ipAddressVlan10 form-group">
+                    <label class="control-label">IP address (interface VLAN 10)</label>
+                    <input type="text" id="ipAddressVlan10" class="form-control" autofocus/>
+                </div>
+
+                <div class="subnetMaskVlan10 form-group">
+                    <label class="control-label">Subnet Mask (interface VLAN 10)</label>
+                    <input type="text" id="subnetMaskVlan10" class="form-control" autofocus/>
+                </div>
+
+                <div class="ipDefault form-group">
+                    <label class="control-label">IP Default-Gateway</label>
+                    <input type="text" id="ipDefault" class="form-control" autofocus/>
+                </div>
+
+                <div class="poe form-group">
+                    <label class="control-label">POE (Yes or No) </label>
+                    <input type="text" id="poe" class="form-control" autofocus/>
+                </div>
+
+                <div class="stack form-group">
+                    <label class="control-label">Stack: (No or (1-9) switches) </label>
+                    <input type="text" id="stack" class="form-control" autofocus/>
+                </div>
+
+                <div class="redundantGW form-group">
+                    <label class="control-label">Redundant Routers (Yes or No) </label>
+                    <input type="text" id="redundantGW" class="form-control" autofocus/>
+                </div>
+
+                <div class="redundantFW form-group">
+                    <label class="control-label">Redundant Firwalls (Yes or No) </label>
+                    <input type="text" id="redundantFW" class="form-control" autofocus/>
+                </div>
+
+
+                <div>
+                    <button id="back1" type="button" class="btn btn-danger" style="width: 200px;">Back</button>
+                    <button herf="#result" id="btn2" type="button" class="btn btn-success" style="width: 200px;">Continue</button>
+                    <div class='errorMessage'></div>
+                </div>
+
+
+
+
+            </div>
+
+
+            <div id="result" class="result hide">
+
+
+                <h1>Welcome to the Configuration page!</h1>
+                <br>
+                <p>You've successfully set your Configuration, you can copy it now.</p>
+
+
+
+                <textarea name="" id="textArea" cols="90" rows="30"></textarea>
+                <br>
+                <br>
+                <div>
+                    <button id="back2" type="button" class="btn btn-danger" style="width: 200px" ;>Back</button>
+                    <button id="copy" type="button" class="btn btn-success" style="width: 200px;">Copy</button>
+                    <span class="notification"></span>
+
+                </div>
+                <div class="ssh">
+                    <input type="radio" name="connect" value="ssh">
+                    <label>SSH</label>
+
+                    <input type="radio" name="connect" value="telnet">
+                    <label>Telnet</label>
+
+                    <div class="">
+                        <label class="control-label">SSH / Telnet IP Address </label>
+                        <input type="text" id="sshIP" autofocus/>
+                    </div>
+                    <div class="">
+                        <label class="control-label">SSH / Telnet Username </label>
+                        <input type="text" id="sshUsername" autofocus/>
+                    </div>
+                    <div class="">
+                        <label class="control-label">SSH / Telnet Password </label>
+                        <input type="text" id="sshPW" autofocus/>
+                    </div>
+
+                    <div>
+                        <button herf="#result" type="button" class="btn btn-primary" style="width: auto;"> Connect and Apply Setting </button>
+                        <div class='errorMessage'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="copyright">
+                <p>©
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="https://raad.space" target="blank"> Raad</a>. All rights reserved.</p>
+            </div>
+
+        </footer>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script lang="JavaScript" src="main.js"></script>
+</body>
+
+</html>
