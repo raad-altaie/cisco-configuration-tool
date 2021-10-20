@@ -1,0 +1,25 @@
+enable
+conf t
+!
+vlan 10
+ name public
+vlan 20
+ name phone
+vlan 30
+ name client-LAN
+!
+no service pad
+no service config
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname raad-TEST-sw01
+line con 0 
+exec-timeout 3
+line vty 0 15
+exec-timeout 3
+end
+exit

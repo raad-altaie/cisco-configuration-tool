@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Cisco Configuration Tool</title>
+</head>
+
+<body>
+
+    <div class="wrapper container">
+        <div class="content mx-auto">
+
+            <!-- Circuits list  -->
+            <div class="vendor ">
+                <br>
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h2 style="color:#007bff;">Company Configuration Tool</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Select the Circuit Type </h5>
+
+                        <select class="circuitType custom-select">
+                            <option class="dropdown" value="Out of Market Circuit (BVI config)">Out of Market Circuit (BVI config)</option>
+                            <option class="dropdown" value="AT&T Metro-E (ASE Config)">AT&T Metro-E (ASE Config)</option>
+                            <option class="dropdown" value="Cox Metro-E/HFC">Cox Metro-E/HFC</option>
+                            <option class="dropdown" value="4G or Dual-ISP Failover">4G or Dual-ISP Failover</option>
+                        </select>
+                        <br>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-lg" id="btn0">Continue</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- devices page  -->
+            <div class="dropList hide">
+                <br>
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h2 style="color:#007bff;">Welcome to Cisco Configuration Tool</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Select the Device from the list </h5>
+                        <div class="deviceMessage alert alert-warning hide">
+
+                        </div>
+                        <select class="eqList custom-select">
+                            <option value="" disabled selected hidden>Select a Device ... </option>
+                            <option class="dropdown hide" id="bviAsr" value="ASR1001 BVI - Out-of-Market circuit 350M and higher">ASR1001 BVI - Out-of-Market circuit 350M and higher</option>
+                            <option class="dropdown hide" id="aseAsr" value="AT&T ASE - ASR1001">AT&T ASE - ASR1001 for circuits 350M and higher</option>
+                            <option class="dropdown hide" id="asrCox" value="Cox Metro-E - ASR1001">Cox Metro-E - ASR1001 for circuits 350M and higher</option>
+                            <option class="dropdown hide" id="bvi2901" value="2901 BVI">2900 BVI - Out-of-Market circuits 100M to 300M* (*Round bandwidth down to 250M)</option>
+                            <option class="dropdown hide" id="ase2901" value="AT&T ASE - 2901">AT&T ASE - 2901 for circuits 100M to 300M* (*Round bandwidth down to 250M)</option>
+                            <option class="dropdown hide" id="cox2901" value="Cox Metro-E - 2901">Cox Metro-E - 2901 for circuits 100M to 300M* (*Round bandwidth down to 250M)</option>
+                            <option class="dropdown hide" id="bvi2811" value="2811 BVI">2811 BVI - Out-Of-Market circuit 75M and lower</option>
+                            <option class="dropdown hide" id="ase2811" value="AT&T ASE - 2811">AT&T ASE - 2811 for 75M and lower</option>
+                            <option class="dropdown hide" id="bviASA5510" value="ASA 5510 9.1 BVI">ASA 5510 9.1 BVI (out-of-Market)</option>
+                            <option class="dropdown hide" id="asa5510" value="ASA 5510 9.1">ASA 5510 9.1</option>
+                            <option class="dropdown hide" id="asaFailover" value="ASA 5510 9.1 4G Failover">ASA 5510 9.1 4G Failover</option>
+                            <option class="dropdown hide" id="adtranFailover" value="Adtran 908 4G Failover"> Adtran 908 4G Failover for SIP trunk</option>
+                            <option class="dropdown hide" id="bviSwitch" value="BVI Cisco 3750-PoE">Out-of-Market Cisco 3750-PoE</option>
+                            <option class="dropdown hide" id="bviStack" value="BVI Cisco 3750-PoE-stack">Out-of-Market Cisco 3750-PoE-stack</option>
+                            <option class="dropdown hide" id="switch3750" value="Cisco 3750-PoE">Cisco 3750-PoE</option>
+                            <option class="dropdown hide" id="stack3750" value="Cisco 3750-PoE-stack">Cisco 3750-PoE-stack</option>
+                        </select>
+                        <br>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-lg" id="back0">Back</button>
+                            <button type="button" class="btn btn-primary btn-lg" id="btn1">Continue</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- inputs page  -->
+            <div class="form card text-center hide">
+                <h1 class="deviceName"></h1>
+
+                <!-- ASR1001 BVI - OoM Circuit 300M+ template -->
+                <div class="clientName form-group">
+                    <label class="control-label">Client Name (Do not use spaces and include location if multi-site client):</label>
+                    <input type="text" id="clientName" class="form-control"/>
+                </div>
+
+                <div class="uploadSpeed form-group">
+                    <label class="control-label">UPLOAD SPEED (1.5m, 20m, 100m, etc.)</label>
+                    <input type="text" id="uploadSpeed" class="form-control"/>
+                </div>
+
+                <div class="downloadSpeedPolice form-group">
+                    <label class="control-label">DOWNLOAD SPEED (1.5m, 20m, 100m, etc.)</label>
+                    <input type="text" id="downloadSpeedPolice" class="form-control"/>
+                </div>
+
+                <div class="downloadSpeedCir form-group">
+                    <label class="control-label">DOWNLOAD SPEED (1.5m, 20m, 100m, etc.)</label>
+                    <input type="text" id="downloadSpeedCir" class="form-control"/>
+                </div>
+
+                <div class="primaryDns form-group">
+                    <label class="control-label">ISP PRIMARY DNS</label>
+                    <input type="text" id="primaryDns" ip class="form-control"/>
+                </div>
+
+                <div class="secondaryDns form-group">
+                    <label class="control-label">ISP SECONDARY DNS </label>
+                    <input type="text" id="secondaryDns" ip class="form-control"/>
+                </div>
+
+                <div class="ipAddressBVI form-group">
+                    <label class="control-label">BVI1 IP address (1st usable IP): </label>
+                    <input type="text" id="ipAddressBVI" ip class="form-control"/>
+                </div>
+
+                <div class="subnetMaskBVI form-group">
+                    <label class="control-label">Subnet Mask: </label>
+                    <input type="text" id="subnetMaskBVI" subnet class="form-control"/>
+                </div>
+
+                <div class="defaultGateway form-group">
+                    <label class="control-label">Default Gateway (For IP Route):</label>
+                    <input type="text" id="defaultGateway" ip class="form-control"/>
+                </div>
+
+                <div class="netAddress form-group">
+                    <label class="control-label">Network Address (for network access-list): </label>
+                    <input type="text" id="netAddress" class="form-control"/>
+                </div>
+
+                <div class="inverseMask form-group">
+                    <label class="control-label">Inverse Subnet Mask (for network access-list)</label>
+                    <input type="text" id="inverseMask" subnet class="form-control"/>
+                </div>
+
+                <div class="vendorName form-group">
+                    <label class="control-label">Circuit Vendor Name</label>
+                    <input type="text" id="vendorName" class="form-control"/>
+                </div>
+
+                <div class="bandwidth form-group">
+                    <label class="control-label">Bandwidth (Mbps)</label>
+                    <input type="text" id="bandwidth" class="form-control"/>
+                </div>
+
+                <div class="zLoc form-group">
+                    <label class="control-label">Z-loc</label>
+                    <input type="text" id="zLoc" class="form-control"/>
+                </div>
+
+                <div class="voice form-group">
+                    <label class="control-label">Voice (Yes or No)</label>
+                    <input type="text" id="voice" class="form-control"/>
+                </div>
+
+                <!-- ASA 5510 BVI - OoM Hosted Voice template -->
+                <div class="priSecDnsFW form-group">
+                    <label class="control-label">ISP PRIMARY AND SECONDARY DNS</label>
+                    <input type="text" id="priSecDnsFW" ip class="form-control"/>
+                </div>
+
+                <!-- AT&T ASE template for 75M and lower-->
+                <div class="lineSpeed form-group">
+                    <label class="control-label">LINE SPEED (1.5m, 20m, 100m, etc.)</label>
+                    <input type="text" id="lineSpeed" class="form-control"/>
+                </div>
+
+                <div class="circuitId form-group">
+                    <label class="control-label">CIRCUIT ID</label>
+                    <input type="text" id="circuitId" class="form-control"/>
+                </div>
+
+                <div class="vlanInt form-group">
+                    <label class="control-label">VLAN ASSIGNMENT (use .25XX format. This will create the subinterface on fa0/0): </label>
+                    <input type="text" id="vlanInt" class="form-control"/>
+                </div>
+
+                <div class="vlanEncap form-group">
+                    <label class="control-label">VLAN ASSIGNMENT (use .25XX format. This will create the encapsulation on the subinterface): </label>
+                    <input type="text" id="vlanEncap" class="form-control"/>
+                </div>
+
+                <div class="ipAddress0 form-group">
+                    <label class="control-label">IP address (Even-side of /30 that will go on interface FastEthernet0/0): </label>
+                    <input type="text" id="ipAddress0" ip class="form-control"/>
+                </div>
+
+                <div class="subnetMask0 form-group">
+                    <label class="control-label">Subnet Mask (interface FastEthernet0/0): </label>
+                    <input type="text" id="subnetMask0" subnet class="form-control"/>
+                </div>
+
+
+                <div class="ipAddress1 form-group">
+                    <label class="control-label">First usable IP for client-facing range (interface FastEthernet0/1): </label>
+                    <input type="text" id="ipAddress1" ip class="form-control"/>
+                </div>
+
+                <div class="subnetMask1 form-group">
+                    <label class="control-label">Subnet Mask (interface FastEthernet0/1)</label>
+                    <input type="text" id="subnetMask1" subnet class="form-control"/>
+
+                </div>
+                <div class="coreside0 form-group">
+                    <label class="control-label">Core-side IP address of /30 (For IP Route):</label>
+                    <input type="text" id="coreside0" ip class="form-control"/>
+                </div>
+
+                <div class="whichWan form-group">
+                    <label class="control-label">is this going to SD-WAN-1 or SD-WAN-1? (Please type the full name)</label>
+                    <input type="text" id="whichWan" class="form-control"/>
+                </div>
+
+                <!-- Cisco 3750 -->
+
+                <div class="ipAddressVlan10 form-group">
+                    <label class="control-label">IP address (interface VLAN 10)</label>
+                    <input type="text" id="ipAddressVlan10" ip class="form-control"/>
+                </div>
+
+                <div class="subnetMaskVlan10 form-group">
+                    <label class="control-label">Subnet Mask (interface VLAN 10)</label>
+                    <input type="text" id="subnetMaskVlan10" subnet class="form-control"/>
+                </div>
+
+                <div class="defaultGateway10 form-group">
+                    <label class="control-label">IP Default-Gateway</label>
+                    <input type="text" id="defaultGateway10" ip class="form-control"/>
+                </div>
+
+                <div class="nmsAuth form-group">
+                    <label class="control-label">NMS Auth Key (Look at SIP trunk connection details and use the Authentication Key) </label>
+                    <input type="text" id="nmsAuth" class="form-control"/>
+                </div>
+
+                <div class="redundantGW form-group">
+                    <label class="control-label">Redundant Routers (Yes or No) </label>
+                    <input type="text" id="redundantGW" class="form-control"/>
+                </div>
+
+                <div class="redundantFW form-group">
+                    <label class="control-label">Redundant Firwalls (Yes or No) </label>
+                    <input type="text" id="redundantFW" class="form-control"/>
+                </div>
+
+                <!-- ASA 5510 4G Failover template -->
+                <div class="nextHop form-group">
+                    <label class="control-label">Next hop of primary circuit (this is the core-side IP, if coming back to our core. If OoM, run traceroute
+                        to see what the next hop after the modem is):</label>
+                    <input type="text" id="nextHop" ip class="form-control"/>
+                </div>
+
+                <!-- Adtran 4G Failover template -->
+                <div class="tenDigitNumber form-group">
+                    <label class="control-label"> Ten digit number for e-911 </label>
+                    <input type="text" id="tenDigitNumber" class="form-control"/>
+                </div>
+
+                <div class="areaCode form-group">
+                    <label class="control-label"> Area Code for phone </label>
+                    <input type="text" id="areaCode" class="form-control"/>
+                </div>
+
+                <div>
+                    <button id="back1" type="button" class="btn btn-danger" style="width: 200px;">Back</button>
+                    <button herf="#result" id="btn2" type="button" class="btn btn-success" style="width: 200px;">Continue</button>
+                    <div class='errorMessage alert alert-danger hide'></div>
+                </div>
+
+
+            </div>
+
+            <!-- Result Page  -->
+            <div class="result hide">
+                <h1>Welcome to the Configuration page!</h1>
+                <br>
+                <p>You've successfully set your Configuration, you can copy it now or send it to your device using the ssh client
+                    below.
+                </p>
+
+                <textarea name="" id="textArea" cols="90" rows="30"></textarea>
+                <br>
+                <br>
+                <div>
+                    <button id="back2" type="button" class="btn btn-danger" style="width: 200px;">Back</button>
+                    <button id="copy" type="button" class="btn btn-success" style="width: 200px;">Copy</button>
+                </div>
+                <div class="copyMessage alert alert-success hide"></div>
+
+
+                <!-- connect remotely -->
+                <div class="ssh">
+                    <div class="">
+                        <label class="control-label"> ip address </label>
+                        <input type="text" id="sshIP"/>
+                    </div>
+                    <div class="">
+                        <label class="control-label"> port </label>
+                        <input type="text" id="sshPort"/>
+                    </div>
+                    <div class="">
+                        <label class="control-label"> username </label>
+                        <input type="text" id="sshUsername"/>
+                    </div>
+                    <div class="">
+                        <label class="control-label"> password </label>
+                        <input type="password" id="sshPW"/>
+                    </div>
+                    <div>
+                        <button herf="#result" type="button" class="btn btn-primary" style="width: auto;"> Connect and Apply Setting </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <footer>
+            <div class="copyright">
+                <p>©
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="http://www.example.com" target="blank"> HA IT and Raad (the danger zone)</a>. All rights reserved, I guess.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script lang="JavaScript" src="js/ipaddr.js"></script>
+    <script lang="JavaScript" src="js/main.js"></script>
+    <script lang="JavaScript" src="js/config templates/adtranFailover.js"></script>
+    <script lang="JavaScript" src="js/config templates/asa5510.js"></script>
+    <script lang="JavaScript" src="js/config templates/asaFailover.js"></script>
+    <script lang="JavaScript" src="js/config templates/ase2811.js"></script>
+    <script lang="JavaScript" src="js/config templates/ase2901.js"></script>
+    <script lang="JavaScript" src="js/config templates/aseAsr.js"></script>
+    <script lang="JavaScript" src="js/config templates/asrCox.js"></script>
+    <script lang="JavaScript" src="js/config templates/bvi2811.js"></script>
+    <script lang="JavaScript" src="js/config templates/bvi2901.js"></script>
+    <script lang="JavaScript" src="js/config templates/bviASA5510.js"></script>
+    <script lang="JavaScript" src="js/config templates/bviAsr.js"></script>
+    <script lang="JavaScript" src="js/config templates/bviStack.js"></script>
+    <script lang="JavaScript" src="js/config templates/bviSwitch.js"></script>
+    <script lang="JavaScript" src="js/config templates/cox2901.js"></script>
+    <script lang="JavaScript" src="js/config templates/stack3750.js"></script>
+    <script lang="JavaScript" src="js/config templates/switch3750.js"></script>
+</body>
+
+</html>

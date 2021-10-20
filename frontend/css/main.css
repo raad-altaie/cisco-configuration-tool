@@ -1,0 +1,94 @@
+.hide {
+    display: none;
+}
+
+html, body {
+    position: relative;
+    margin: 0;
+    background: #efefef;
+    height: 100%;
+}
+.wrapper{
+    position: relative;
+    min-height:100%;
+}
+h1{
+    color:#007bff;
+}
+.dropList{
+    /* margin-top: 5em; */
+}
+
+.container{
+    width:80%;
+}
+
+.card-title{
+    color: #8e98a2;
+}
+.card-header:first-child{
+    background: #b1b1b1;
+}
+.custom-select {
+    width: 80%;
+    margin: 2em;
+}
+.btn{
+    margin: 5px;
+}
+.btn-group-lg>.btn,
+.btn-lg {
+    margin: 0.5em;
+}
+
+.form, .result{
+background-color: #ededed;
+padding: 6em;
+text-align: center;
+
+}
+
+textarea{
+font-size: 14px;
+}
+
+.deviceMessage {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    width:50%;
+    left: 25%;
+}
+
+.errorMessage {
+    margin-top: 25px;
+}
+
+.copyMessage {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    width:50%;
+    left: 25%;
+}
+
+.form-group{
+    text-align: left;
+}
+.ssh{
+padding: 2%;
+margin: 4%;
+
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    text-align: center;
+    display: block;
+}
+/* .copyright{
+    
+    padding-top: 23px;
+    
+} */
